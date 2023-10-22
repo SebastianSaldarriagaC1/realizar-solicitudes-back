@@ -1,0 +1,40 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    initialize: true
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 5
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+
+  messages:
+    basename: bundles/apiLanguageBundle
+
+ssmu-api:
+  openapi:
+    dev-url: http://localhost:8080/ssmu-api
+    prod-url: https://ssmu-api.com
+
+logging:
+  level:
+    root: DEBUG
+    org.springframework: DEBUG

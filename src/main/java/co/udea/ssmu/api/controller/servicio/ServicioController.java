@@ -59,7 +59,7 @@ public class ServicioController {
                 servicioFacade.aceptar(servicio)));
     }
 
-    @DeleteMapping("/solicitar/rechazar")
+    @DeleteMapping("/solicitar/rechazar/{id}")
     @Operation(summary = "Permite descartar una solicitud de servicio")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "La solcitud fue rechazada exitosamente"),

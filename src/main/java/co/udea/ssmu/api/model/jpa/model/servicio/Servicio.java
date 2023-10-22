@@ -1,13 +1,18 @@
-package co.udea.ssmu.api.model.jpa.model.jpa.servicio;
+package co.udea.ssmu.api.model.jpa.model.servicio;
 
-import co.udea.ssmu.api.model.jpa.model.jpa.conductor.Conductor;
-import co.udea.ssmu.api.model.jpa.model.jpa.usuario.Usuario;
+import co.udea.ssmu.api.model.jpa.model.conductor.Conductor;
+import co.udea.ssmu.api.model.jpa.model.ubicacion.Ubicacion;
+import co.udea.ssmu.api.model.jpa.model.usuario.Usuario;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "servicio")
 public class Servicio {
@@ -24,11 +29,13 @@ public class Servicio {
     @JoinColumn(name = "id_conductor")
     private Conductor conductor;
 
-    @Column(name = "id_ubicacion_origen")       //Cambiar cuando tenga la tabla Ubicación
-    private Integer idUbicacionOrigen;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_ubicacion_origen")
+    private Ubicacion ubicacionOrigen;
 
-    @Column(name = "id_ubicacion_destino")      //Cambiar cuando tenga la tabla Ubicación
-    private Integer idUbicacionDestino;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_ubicacion_destino")
+    private Ubicacion ubicacionDestino;
 
     @Column(name = "fecha_inicio")
     private LocalDateTime fechaInicio;

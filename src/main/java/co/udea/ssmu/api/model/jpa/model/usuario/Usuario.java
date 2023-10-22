@@ -1,9 +1,13 @@
-package co.udea.ssmu.api.model.jpa.model.jpa.usuario;
+package co.udea.ssmu.api.model.jpa.model.usuario;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "usuario")
 public class Usuario {
