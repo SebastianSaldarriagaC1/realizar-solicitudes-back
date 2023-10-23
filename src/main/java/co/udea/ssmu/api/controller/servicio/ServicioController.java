@@ -26,7 +26,7 @@ public class ServicioController {
     private final ServicioFacade servicioFacade;
     private final Messages messages;
 
-    public ServicioController(ServicioFacade servicioFacade, Messages messages){
+    public ServicioController(ServicioFacade servicioFacade, Messages messages) {
         this.servicioFacade = servicioFacade;
         this.messages = messages;
     }
@@ -38,8 +38,8 @@ public class ServicioController {
                     @Content(schema = @Schema(implementation = ServicioDTO.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
             }, description = "El servicio fue solicitado exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
-            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta")})
-    public ResponseEntity<StandardResponse<ServicioDTO>> solicitar(@Valid @RequestBody ServicioDTO servicio){
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
+    public ResponseEntity<StandardResponse<ServicioDTO>> solicitar(@Valid @RequestBody ServicioDTO servicio) {
         return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK,
                 messages.get("servicio.solicitar.succesful"),
                 servicioFacade.solicitar(servicio)));
@@ -52,11 +52,11 @@ public class ServicioController {
                     @Content(schema = @Schema(implementation = ServicioDTO.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
             }, description = "El servicio fue aceptado exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
-            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta")})
-    public ResponseEntity<StandardResponse<ServicioDTO>> aceptar(@Valid @RequestBody ServicioDTO servicio){
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
+    public ResponseEntity<StandardResponse<ServicioDTO>> aceptar(@Valid @RequestBody Integer id) {
         return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK,
                 messages.get("servicio.solicitar.succesful"),
-                servicioFacade.aceptar(servicio)));
+                servicioFacade.aceptar(id)));
     }
 
     @DeleteMapping("/solicitar/rechazar/{id}")
@@ -64,11 +64,12 @@ public class ServicioController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "La solcitud fue rechazada exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
-            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta")})
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
     public ResponseEntity<StandardResponse<Void>> rechazar(@PathVariable Integer id) {
         try {
             servicioFacade.rechazar(id);
-            return ResponseEntity.ok(new StandardResponse<>(messages.get("driver.delete.successful"), StandardResponse.StatusStandardResponse.OK));
+            return ResponseEntity.ok(new StandardResponse<>(messages.get("driver.delete.successful"),
+                    StandardResponse.StatusStandardResponse.OK));
         } catch (DataIntegrityViolationException e) {
             throw new DataBaseException(messages.get("driver.delete.error"));
         }
