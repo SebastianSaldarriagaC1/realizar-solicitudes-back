@@ -5,7 +5,7 @@ on:
   #Iniciar el workflow al hacer push a la rama indicada
   push:
     branches:
-      - realizar-solicitudes-servicios
+      - main
 jobs:
   #Tests job
   tests:
