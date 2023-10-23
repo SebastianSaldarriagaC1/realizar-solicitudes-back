@@ -14,6 +14,7 @@ spring:
     username: sa
     password:
     initialize: true
+    initialization-mode: always
     hikari:
       idle-timeout: 10000
       maximum-pool-size: 5

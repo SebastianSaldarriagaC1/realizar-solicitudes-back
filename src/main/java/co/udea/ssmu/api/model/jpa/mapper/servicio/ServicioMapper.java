@@ -7,4 +7,9 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface ServicioMapper extends EntityMapper<ServicioDTO, Servicio> {
+    @Override
+    Servicio toEntity(ServicioDTO dto);
+
+    @Override
+    ServicioDTO toDto(Servicio entity);
 }

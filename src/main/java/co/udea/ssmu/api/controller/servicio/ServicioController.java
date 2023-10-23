@@ -45,7 +45,7 @@ public class ServicioController {
                 servicioFacade.solicitar(servicio)));
     }
 
-    @PutMapping("/solicitar/aceptar")
+    @PutMapping("/solicitar/{id}/aceptar")
     @Operation(summary = "Permite aceptar una solicitud")
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = {
@@ -53,13 +53,13 @@ public class ServicioController {
             }, description = "El servicio fue aceptado exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
-    public ResponseEntity<StandardResponse<ServicioDTO>> aceptar(@Valid @RequestBody Integer id) {
+    public ResponseEntity<StandardResponse<ServicioDTO>> aceptar(@PathVariable Integer id) {
         return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK,
                 messages.get("servicio.solicitar.succesful"),
                 servicioFacade.aceptar(id)));
     }
 
-    @DeleteMapping("/solicitar/rechazar/{id}")
+    @DeleteMapping("/solicitar/{id}/rechazar")
     @Operation(summary = "Permite descartar una solicitud de servicio")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "La solcitud fue rechazada exitosamente"),

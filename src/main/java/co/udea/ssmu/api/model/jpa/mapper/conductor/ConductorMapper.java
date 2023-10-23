@@ -7,4 +7,9 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface ConductorMapper extends EntityMapper<ConductorDTO, Conductor> {
+    @Override
+    Conductor toEntity(ConductorDTO dto);
+
+    @Override
+    ConductorDTO toDto(Conductor entity);
 }

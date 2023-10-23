@@ -1,13 +1,14 @@
 package co.udea.ssmu.api.model.jpa.model.usuario;
 
+import co.udea.ssmu.api.model.jpa.model.servicio.Servicio;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -39,4 +40,8 @@ public class Usuario {
 
     @Column(name = "nro_servicios")
     private Integer nroServicios;
+
+    //Relaciones
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Servicio> servicios;
 }
