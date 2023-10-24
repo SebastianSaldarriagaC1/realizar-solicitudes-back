@@ -39,4 +39,12 @@ public class ServicioService {
                 .orElseThrow(() -> new BusinessException(String.format(messages.get("driver.delete.find.error"), id)));
         servicioRepository.deleteById(id);
     }
+
+    public Double getCostoById(Integer id){
+        Optional<Servicio> servicioAux = servicioRepository.findById(id);
+
+        Servicio servicio = servicioAux.orElseThrow(() -> new BusinessException(messages.get("driver.update.does.not.exist")));
+
+        return servicio.getCosto();
+    }
 }

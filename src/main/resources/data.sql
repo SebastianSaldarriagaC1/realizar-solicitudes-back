@@ -20,9 +20,9 @@ INSERT INTO ubicacion (id_ubicacion, latitud, longitud, direccion) VALUES
 (5, 6.257640, -75.591020, 'Carrera 33 #25-60, Medellín, Colombia');
 
 INSERT INTO servicio (id_servicio, id_usuario, id_conductor, id_ubicacion_origen, id_ubicacion_destino, fecha_inicio, id_tipo_servicio, estado, detalles, id_categoria, estado_pago, calificacion_conductor, calificacion_usuario, id_estrategia, motivo, costo) VALUES
-(1, 1, 1, 1, 2, '2023-10-22T16:00:00', 1, 'En progreso', 'Llevo equipaje', 1, 'Pagado', '5', '4', 1, 'Viaje normal', 50.0),
-(2, 2, 2, 2, 3, '2023-10-23T10:00:00', 2, 'Completado', 'Viaje tranquilo', 2, 'Pagado', '4', '5', 2, 'Viaje normal', 60.0),
-(3, 3, 3, 3, 1, '2023-10-24T18:00:00', 1, 'En progreso', 'Sin comentarios', 3, 'No Pagado', null, null, 3, 'Viaje normal', 30.0),
+(1, 1, 1, 1, 2, '2023-10-22T16:00:00', 1, 'En progreso', 'Llevo equipaje', 1, 'Pagado', '5', '4', 1, 'Viaje normal', 15000.0),
+(2, 2, 2, 2, 3, '2023-10-23T10:00:00', 2, 'Completado', 'Viaje tranquilo', 2, 'Pagado', '4', '5', 2, 'Viaje normal', 16000.0),
+(3, 3, 3, 3, 1, '2023-10-24T18:00:00', 1, 'En progreso', 'Sin comentarios', 3, 'No Pagado', null, null, 3, 'Viaje normal', 23000.0),
 (4, 4, 4, 4, 2, '2023-10-25T12:00:00', 2, 'Cancelado', 'El usuario canceló', 4, 'No Pagado', '1', '5', 4, 'Usuario canceló', 0.0),
-(5, 5, 5, 5, 3, '2023-10-26T20:00:00', 1, 'En espera', 'Llevo mascota', 5, 'No Pagado', null, null, 5, 'Viaje normal', 45.0);
+(5, 5, 5, 5, 3, '2023-10-26T20:00:00', 1, 'En espera', 'Llevo mascota', 5, 'No Pagado', null, null, 5, 'Viaje normal', 14500.0);
 

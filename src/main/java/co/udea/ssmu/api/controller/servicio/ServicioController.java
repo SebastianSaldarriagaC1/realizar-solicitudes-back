@@ -74,4 +74,14 @@ public class ServicioController {
             throw new DataBaseException(messages.get("driver.delete.error"));
         }
     }
+
+    @GetMapping("/solicitar/{id}")
+    @Operation(summary = "Permite obtener el valor de una solicitud de servicio por medio de su ID")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Solicitud de servicio hallada exitosamente"),
+            @ApiResponse(responseCode = "400", description = "La petición es inválida"),
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
+    public Double getCostoById(@PathVariable Integer id) {
+        return servicioFacade.getCostoById(id);
+    }
 }

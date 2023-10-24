@@ -46,4 +46,8 @@ public class ServicioFacade {
     public void rechazar(Integer id) {
         servicioService.rechazar(id);
     }
+
+    public Double getCostoById(Integer id){
+        return servicioService.getCostoById(id);
+    }
 }
