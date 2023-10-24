@@ -36,7 +36,7 @@ public class ServicioController {
     @Operation(summary = "Permite solicitar un servicio")
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = {
-                    @Content(schema = @Schema(implementation = ServicioDTO.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
+                    @Content(schema = @Schema(implementation = Servicio.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
             }, description = "El servicio fue solicitado exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
@@ -50,11 +50,11 @@ public class ServicioController {
     @Operation(summary = "Permite aceptar una solicitud")
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = {
-                    @Content(schema = @Schema(implementation = ServicioDTO.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
+                    @Content(schema = @Schema(implementation = Servicio.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
             }, description = "El servicio fue aceptado exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
-    public ResponseEntity<StandardResponse<ServicioDTO>> aceptar(@PathVariable Integer id) {
+    public ResponseEntity<StandardResponse<Servicio>> aceptar(@PathVariable Integer id) {
         return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK,
                 messages.get("servicio.solicitar.succesful"),
                 servicioFacade.aceptar(id)));
@@ -77,12 +77,22 @@ public class ServicioController {
     }
 
     @GetMapping("/solicitar/{id}")
-    @Operation(summary = "Permite obtener el valor de una solicitud de servicio por medio de su ID")
+    @Operation(summary = "Permite obtener el costo de una solicitud de servicio por medio de su ID")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Solicitud de servicio hallada exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
     public Double getCostoById(@PathVariable Integer id) {
         return servicioFacade.getCostoById(id);
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Permite obtener un servicio por medio de su ID")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Servicio hallado exitosamente"),
+            @ApiResponse(responseCode = "400", description = "La petición es inválida"),
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
+    public Servicio getServicioById(@PathVariable Integer id) {
+        return servicioFacade.getServicioById(id);
     }
 }

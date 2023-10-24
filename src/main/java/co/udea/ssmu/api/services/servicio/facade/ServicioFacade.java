@@ -40,8 +40,8 @@ public class ServicioFacade {
         return servicioService.create(servicio);
     }
 
-    public ServicioDTO aceptar(Integer id) {
-        return servicioMapper.toDto(servicioService.aceptar(id));
+    public Servicio aceptar(Integer id) {
+        return servicioService.aceptar(id);
     }
 
     public void rechazar(Integer id) {
@@ -50,5 +50,9 @@ public class ServicioFacade {
 
     public Double getCostoById(Integer id){
         return servicioService.getCostoById(id);
+    }
+
+    public Servicio getServicioById(Integer id){
+        return servicioService.getServicioById(id);
     }
 }

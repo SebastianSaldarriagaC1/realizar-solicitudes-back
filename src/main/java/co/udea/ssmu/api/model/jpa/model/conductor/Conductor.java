@@ -1,6 +1,7 @@
 package co.udea.ssmu.api.model.jpa.model.conductor;
 
 import co.udea.ssmu.api.model.jpa.model.servicio.Servicio;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,6 +45,7 @@ public class Conductor {
     private String placa;
 
     //Relaciones
+    @JsonIgnore
     @OneToMany(mappedBy = "conductor", fetch = FetchType.LAZY)
     private List<Servicio> servicios;
 }

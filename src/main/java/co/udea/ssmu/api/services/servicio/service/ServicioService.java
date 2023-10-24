@@ -47,4 +47,10 @@ public class ServicioService {
 
         return servicio.getCosto();
     }
+
+    public Servicio getServicioById(Integer id){
+        Optional<Servicio> servicioAux = servicioRepository.findById(id);
+
+        return servicioAux.orElseThrow(() -> new BusinessException(messages.get("servicio.does.not.exist")));
+    }
 }
