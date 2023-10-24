@@ -1,6 +1,7 @@
 package co.udea.ssmu.api.controller.servicio;
 
 import co.udea.ssmu.api.model.jpa.dto.servicio.ServicioDTO;
+import co.udea.ssmu.api.model.jpa.model.servicio.Servicio;
 import co.udea.ssmu.api.services.servicio.facade.ServicioFacade;
 import co.udea.ssmu.api.utils.common.Messages;
 import co.udea.ssmu.api.utils.common.StandardResponse;
@@ -39,7 +40,7 @@ public class ServicioController {
             }, description = "El servicio fue solicitado exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
-    public ResponseEntity<StandardResponse<ServicioDTO>> solicitar(@Valid @RequestBody ServicioDTO servicio) {
+    public ResponseEntity<StandardResponse<Servicio>> solicitar(@Valid @RequestBody Servicio servicio) {
         return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK,
                 messages.get("servicio.solicitar.succesful"),
                 servicioFacade.solicitar(servicio)));

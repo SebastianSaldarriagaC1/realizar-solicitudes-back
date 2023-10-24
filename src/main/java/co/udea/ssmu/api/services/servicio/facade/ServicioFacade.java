@@ -4,6 +4,7 @@ import co.udea.ssmu.api.model.jpa.dto.servicio.ServicioDTO;
 import co.udea.ssmu.api.model.jpa.dto.ubicacion.UbicacionDTO;
 import co.udea.ssmu.api.model.jpa.mapper.servicio.ServicioMapper;
 import co.udea.ssmu.api.model.jpa.mapper.ubicacion.UbicacionMapper;
+import co.udea.ssmu.api.model.jpa.model.servicio.Servicio;
 import co.udea.ssmu.api.model.jpa.model.ubicacion.Ubicacion;
 import co.udea.ssmu.api.services.servicio.service.ServicioService;
 import co.udea.ssmu.api.services.ubicacion.service.UbicacionService;
@@ -26,17 +27,17 @@ public class ServicioFacade {
         this.ubicacionMapper = ubicacionMapper;
     }
 
-    public ServicioDTO solicitar(ServicioDTO servicioDTO) {
-        Ubicacion origenEntity = ubicacionService.create(ubicacionMapper.toEntity(servicioDTO.getUbicacionOrigen()));
-        Ubicacion destinoEntity = ubicacionService.create(ubicacionMapper.toEntity(servicioDTO.getUbicacionDestino()));
+    public Servicio solicitar(Servicio servicio) {
+        Ubicacion origenEntity = ubicacionService.create(servicio.getUbicacionOrigen());
+        Ubicacion destinoEntity = ubicacionService.create(servicio.getUbicacionDestino());
 
-        servicioDTO.getUbicacionOrigen().setIdUbicacion(origenEntity.getIdUbicacion());
-        servicioDTO.getUbicacionDestino().setIdUbicacion(destinoEntity.getIdUbicacion());
+        servicio.getUbicacionOrigen().setIdUbicacion(origenEntity.getIdUbicacion());
+        servicio.getUbicacionDestino().setIdUbicacion(destinoEntity.getIdUbicacion());
 
         // Método para calcular el precio
-        servicioDTO.setCosto(20000d);
+        servicio.setCosto(20000d);
 
-        return servicioMapper.toDto(servicioService.create(servicioMapper.toEntity(servicioDTO)));
+        return servicioService.create(servicio);
     }
 
     public ServicioDTO aceptar(Integer id) {

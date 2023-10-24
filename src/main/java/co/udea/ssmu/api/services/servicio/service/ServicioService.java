@@ -28,7 +28,7 @@ public class ServicioService {
     public Servicio aceptar(Integer id) {
         Optional<Servicio> servicioAux = servicioRepository.findById(id);
 
-        Servicio servicio = servicioAux.orElseThrow(() -> new BusinessException(messages.get("driver.update.does.not.exist")));
+        Servicio servicio = servicioAux.orElseThrow(() -> new BusinessException(messages.get("servicio.does.not.exist")));
 
         servicio.setEstado("Aceptado");
         return servicioRepository.save(servicio);
@@ -36,14 +36,14 @@ public class ServicioService {
 
     public void rechazar(Integer id) {
         servicioRepository.findById(id)
-                .orElseThrow(() -> new BusinessException(String.format(messages.get("driver.delete.find.error"), id)));
+                .orElseThrow(() -> new BusinessException(String.format(messages.get("servicio.delete.find.error"), id)));
         servicioRepository.deleteById(id);
     }
 
     public Double getCostoById(Integer id){
         Optional<Servicio> servicioAux = servicioRepository.findById(id);
 
-        Servicio servicio = servicioAux.orElseThrow(() -> new BusinessException(messages.get("driver.update.does.not.exist")));
+        Servicio servicio = servicioAux.orElseThrow(() -> new BusinessException(messages.get("servicio.does.not.exist")));
 
         return servicio.getCosto();
     }
