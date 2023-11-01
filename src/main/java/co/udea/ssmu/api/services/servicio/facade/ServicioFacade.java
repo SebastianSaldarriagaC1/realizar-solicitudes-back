@@ -27,9 +27,9 @@ public class ServicioFacade {
         this.ubicacionMapper = ubicacionMapper;
     }
 
-    public Servicio solicitar(Servicio servicio) {
-        Ubicacion origenEntity = ubicacionService.create(servicio.getUbicacionOrigen());
-        Ubicacion destinoEntity = ubicacionService.create(servicio.getUbicacionDestino());
+    public ServicioDTO solicitar(ServicioDTO servicio) {
+        Ubicacion origenEntity = ubicacionService.create(ubicacionMapper.toEntity(servicio.getUbicacionOrigen()));
+        Ubicacion destinoEntity = ubicacionService.create(ubicacionMapper.toEntity(servicio.getUbicacionDestino()));
 
         servicio.getUbicacionOrigen().setIdUbicacion(origenEntity.getIdUbicacion());
         servicio.getUbicacionDestino().setIdUbicacion(destinoEntity.getIdUbicacion());
@@ -37,11 +37,11 @@ public class ServicioFacade {
         // Método para calcular el precio
         servicio.setCosto(20000d);
 
-        return servicioService.create(servicio);
+        return servicioMapper.toDto(servicioService.create(servicioMapper.toEntity(servicio)));
     }
 
-    public Servicio aceptar(Integer id) {
-        return servicioService.aceptar(id);
+    public ServicioDTO aceptar(Integer id) {
+        return servicioMapper.toDto(servicioService.aceptar(id));
     }
 
     public void rechazar(Integer id) {
@@ -52,7 +52,7 @@ public class ServicioFacade {
         return servicioService.getCostoById(id);
     }
 
-    public Servicio getServicioById(Integer id){
-        return servicioService.getServicioById(id);
+    public ServicioDTO getServicioById(Integer id){
+        return servicioMapper.toDto(servicioService.getServicioById(id));
     }
 }

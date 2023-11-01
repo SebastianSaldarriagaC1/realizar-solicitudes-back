@@ -22,20 +22,20 @@ public class UbicacionFacade {
         this.ubicacionMapper = ubicacionMapper;
     }
 
-    public Ubicacion create(Ubicacion ubicacionDTO){
-        return ubicacionService.create(ubicacionDTO);
+    public UbicacionDTO create(UbicacionDTO ubicacionDTO){
+        return ubicacionMapper.toDto(ubicacionService.create(ubicacionMapper.toEntity(ubicacionDTO))) ;
     }
 
-    public Ubicacion update(Integer id){
-        return ubicacionService.update(id);
+    public UbicacionDTO update(Integer id){
+        return ubicacionMapper.toDto(ubicacionService.update(id));
     }
 
-    public List<Ubicacion> findAll(){
-        return ubicacionService.findAll();
+    public List<UbicacionDTO> findAll(){
+        return ubicacionMapper.toDto(ubicacionService.findAll());
     }
 
-    public Ubicacion findByDireccion(String direccion){
-        return ubicacionService.findByDireccion(direccion);
+    public UbicacionDTO findByDireccion(String direccion){
+        return ubicacionMapper.toDto(ubicacionService.findByDireccion(direccion));
     }
 
     public void delete(Integer id){

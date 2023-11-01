@@ -10,9 +10,4 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", uses = {UsuarioMapper.class, ConductorMapper.class, UbicacionMapper.class})
 public interface ServicioMapper extends EntityMapper<ServicioDTO, Servicio> {
-    @Override
-    Servicio toEntity(ServicioDTO dto);
-
-    @Override
-    ServicioDTO toDto(Servicio entity);
 }

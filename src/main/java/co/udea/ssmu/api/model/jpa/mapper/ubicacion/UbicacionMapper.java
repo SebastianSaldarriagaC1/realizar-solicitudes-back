@@ -7,9 +7,4 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface UbicacionMapper extends EntityMapper<UbicacionDTO, Ubicacion> {
-    @Override
-    Ubicacion toEntity(UbicacionDTO dto);
-
-    @Override
-    UbicacionDTO toDto(Ubicacion entity);
 }
