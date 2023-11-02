@@ -1,6 +1,5 @@
 package co.udea.ssmu.api.services.ubicacion.service;
 
-import co.udea.ssmu.api.model.jpa.model.servicio.Servicio;
 import co.udea.ssmu.api.model.jpa.model.ubicacion.Ubicacion;
 import co.udea.ssmu.api.model.jpa.repository.ubicacion.IUbicacionRepository;
 import co.udea.ssmu.api.utils.common.Messages;

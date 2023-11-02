@@ -3,11 +3,6 @@ package co.udea.ssmu.api.model.jpa.dto.servicio;
 import co.udea.ssmu.api.model.jpa.dto.conductor.ConductorDTO;
 import co.udea.ssmu.api.model.jpa.dto.ubicacion.UbicacionDTO;
 import co.udea.ssmu.api.model.jpa.dto.usuario.UsuarioDTO;
-import co.udea.ssmu.api.model.jpa.model.conductor.Conductor;
-import co.udea.ssmu.api.model.jpa.model.usuario.Usuario;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -29,6 +24,29 @@ public class ServicioDTO {
     private Integer idEstrategia;
     private String motivo;
     private Double costo;
+
+    public ServicioDTO() {
+    }
+
+    public ServicioDTO(Integer idServicio, UsuarioDTO usuario, ConductorDTO conductor, UbicacionDTO ubicacionOrigen, UbicacionDTO ubicacionDestino, LocalDateTime fechaInicio, LocalDateTime fechaFin, Integer idTipoServicio, String estado, String detalles, Integer idCategoria, String estadoPago, String calificacionConductor, String calificacionUsuario, Integer idEstrategia, String motivo, Double costo) {
+        this.idServicio = idServicio;
+        this.usuario = usuario;
+        this.conductor = conductor;
+        this.ubicacionOrigen = ubicacionOrigen;
+        this.ubicacionDestino = ubicacionDestino;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.idTipoServicio = idTipoServicio;
+        this.estado = estado;
+        this.detalles = detalles;
+        this.idCategoria = idCategoria;
+        this.estadoPago = estadoPago;
+        this.calificacionConductor = calificacionConductor;
+        this.calificacionUsuario = calificacionUsuario;
+        this.idEstrategia = idEstrategia;
+        this.motivo = motivo;
+        this.costo = costo;
+    }
 
     public Integer getIdServicio() {
         return idServicio;

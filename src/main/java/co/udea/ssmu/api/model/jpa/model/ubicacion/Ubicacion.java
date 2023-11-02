@@ -1,7 +1,6 @@
 package co.udea.ssmu.api.model.jpa.model.ubicacion;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Table(name = "ubicacion")
@@ -19,6 +18,16 @@ public class Ubicacion {
 
     @Column(name = "direccion")
     private String direccion;
+
+    public Ubicacion() {
+    }
+
+    public Ubicacion(Integer idUbicacion, Double latitud, Double longitud, String direccion) {
+        this.idUbicacion = idUbicacion;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.direccion = direccion;
+    }
 
     public Integer getIdUbicacion() {
         return idUbicacion;

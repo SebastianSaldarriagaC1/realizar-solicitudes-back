@@ -1,10 +1,8 @@
 package co.udea.ssmu.api.services.servicio.facade;
 
 import co.udea.ssmu.api.model.jpa.dto.servicio.ServicioDTO;
-import co.udea.ssmu.api.model.jpa.dto.ubicacion.UbicacionDTO;
 import co.udea.ssmu.api.model.jpa.mapper.servicio.ServicioMapper;
 import co.udea.ssmu.api.model.jpa.mapper.ubicacion.UbicacionMapper;
-import co.udea.ssmu.api.model.jpa.model.servicio.Servicio;
 import co.udea.ssmu.api.model.jpa.model.ubicacion.Ubicacion;
 import co.udea.ssmu.api.services.servicio.service.ServicioService;
 import co.udea.ssmu.api.services.ubicacion.service.UbicacionService;

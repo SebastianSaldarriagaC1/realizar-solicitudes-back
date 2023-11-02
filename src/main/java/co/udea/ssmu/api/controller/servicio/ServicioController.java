@@ -1,7 +1,6 @@
 package co.udea.ssmu.api.controller.servicio;
 
 import co.udea.ssmu.api.model.jpa.dto.servicio.ServicioDTO;
-import co.udea.ssmu.api.model.jpa.model.servicio.Servicio;
 import co.udea.ssmu.api.services.servicio.facade.ServicioFacade;
 import co.udea.ssmu.api.utils.common.Messages;
 import co.udea.ssmu.api.utils.common.StandardResponse;

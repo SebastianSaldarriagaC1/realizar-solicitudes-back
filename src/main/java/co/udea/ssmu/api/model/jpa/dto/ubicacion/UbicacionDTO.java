@@ -1,14 +1,20 @@
 package co.udea.ssmu.api.model.jpa.dto.ubicacion;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 public class UbicacionDTO {
     private Integer idUbicacion;
     private Double latitud;
     private Double longitud;
     private String direccion;
+
+    public UbicacionDTO() {
+    }
+
+    public UbicacionDTO(Integer idUbicacion, Double latitud, Double longitud, String direccion) {
+        this.idUbicacion = idUbicacion;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.direccion = direccion;
+    }
 
     public Integer getIdUbicacion() {
         return idUbicacion;

@@ -1,9 +1,5 @@
 package co.udea.ssmu.api.model.jpa.dto.usuario;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 public class UsuarioDTO {
     private Integer idUsuario;
     private Integer idGrupo;
@@ -14,6 +10,21 @@ public class UsuarioDTO {
     private String rol;
     private Integer idTipoUsuario;
     private Integer nroServicios;
+
+    public UsuarioDTO() {
+    }
+
+    public UsuarioDTO(Integer idUsuario, Integer idGrupo, String nombre, String celular, String email, String cedula, String rol, Integer idTipoUsuario, Integer nroServicios) {
+        this.idUsuario = idUsuario;
+        this.idGrupo = idGrupo;
+        this.nombre = nombre;
+        this.celular = celular;
+        this.email = email;
+        this.cedula = cedula;
+        this.rol = rol;
+        this.idTipoUsuario = idTipoUsuario;
+        this.nroServicios = nroServicios;
+    }
 
     public Integer getIdUsuario() {
         return idUsuario;

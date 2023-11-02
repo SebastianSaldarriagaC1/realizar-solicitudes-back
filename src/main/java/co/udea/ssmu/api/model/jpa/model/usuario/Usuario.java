@@ -3,9 +3,6 @@ package co.udea.ssmu.api.model.jpa.model.usuario;
 import co.udea.ssmu.api.model.jpa.model.servicio.Servicio;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -45,6 +42,22 @@ public class Usuario {
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Servicio> servicios;
+
+    public Usuario() {
+    }
+
+    public Usuario(Integer idUsuario, Integer idGrupo, String nombre, String celular, String email, String cedula, String rol, Integer idTipoUsuario, Integer nroServicios, List<Servicio> servicios) {
+        this.idUsuario = idUsuario;
+        this.idGrupo = idGrupo;
+        this.nombre = nombre;
+        this.celular = celular;
+        this.email = email;
+        this.cedula = cedula;
+        this.rol = rol;
+        this.idTipoUsuario = idTipoUsuario;
+        this.nroServicios = nroServicios;
+        this.servicios = servicios;
+    }
 
     public Integer getIdUsuario() {
         return idUsuario;

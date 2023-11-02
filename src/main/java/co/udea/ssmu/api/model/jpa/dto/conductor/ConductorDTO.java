@@ -1,9 +1,5 @@
 package co.udea.ssmu.api.model.jpa.dto.conductor;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 public class ConductorDTO {
     private Integer idConductor;
     private String nombre;
@@ -14,6 +10,21 @@ public class ConductorDTO {
     private Integer idTipoUsuario;
     private Integer nroServicios;
     private String placa;
+
+    public ConductorDTO() {
+    }
+
+    public ConductorDTO(Integer idConductor, String nombre, String celular, String email, String cedula, String rol, Integer idTipoUsuario, Integer nroServicios, String placa) {
+        this.idConductor = idConductor;
+        this.nombre = nombre;
+        this.celular = celular;
+        this.email = email;
+        this.cedula = cedula;
+        this.rol = rol;
+        this.idTipoUsuario = idTipoUsuario;
+        this.nroServicios = nroServicios;
+        this.placa = placa;
+    }
 
     public Integer getIdConductor() {
         return idConductor;

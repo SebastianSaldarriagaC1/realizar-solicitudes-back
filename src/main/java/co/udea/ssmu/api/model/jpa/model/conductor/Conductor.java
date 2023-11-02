@@ -3,9 +3,6 @@ package co.udea.ssmu.api.model.jpa.model.conductor;
 import co.udea.ssmu.api.model.jpa.model.servicio.Servicio;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -47,6 +44,22 @@ public class Conductor {
     @JsonIgnore
     @OneToMany(mappedBy = "conductor", fetch = FetchType.LAZY)
     private List<Servicio> servicios;
+
+    public Conductor() {
+    }
+
+    public Conductor(Integer idConductor, String nombre, String celular, String email, String cedula, String rol, Integer idTipoUsuario, Integer nroServicios, String placa, List<Servicio> servicios) {
+        this.idConductor = idConductor;
+        this.nombre = nombre;
+        this.celular = celular;
+        this.email = email;
+        this.cedula = cedula;
+        this.rol = rol;
+        this.idTipoUsuario = idTipoUsuario;
+        this.nroServicios = nroServicios;
+        this.placa = placa;
+        this.servicios = servicios;
+    }
 
     public Integer getIdConductor() {
         return idConductor;

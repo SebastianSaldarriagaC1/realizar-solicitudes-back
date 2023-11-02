@@ -4,9 +4,6 @@ import co.udea.ssmu.api.model.jpa.model.conductor.Conductor;
 import co.udea.ssmu.api.model.jpa.model.ubicacion.Ubicacion;
 import co.udea.ssmu.api.model.jpa.model.usuario.Usuario;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -69,6 +66,29 @@ public class Servicio {
 
     @Column(name = "costo")
     private Double costo;
+
+    public Servicio() {
+    }
+
+    public Servicio(Integer idServicio, Usuario usuario, Conductor conductor, Ubicacion ubicacionOrigen, Ubicacion ubicacionDestino, LocalDateTime fechaInicio, LocalDateTime fechaFin, Integer idTipoServicio, String estado, String detalles, Integer idCategoria, String estadoPago, String calificacionConductor, String calificacionUsuario, Integer idEstrategia, String motivo, Double costo) {
+        this.idServicio = idServicio;
+        this.usuario = usuario;
+        this.conductor = conductor;
+        this.ubicacionOrigen = ubicacionOrigen;
+        this.ubicacionDestino = ubicacionDestino;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.idTipoServicio = idTipoServicio;
+        this.estado = estado;
+        this.detalles = detalles;
+        this.idCategoria = idCategoria;
+        this.estadoPago = estadoPago;
+        this.calificacionConductor = calificacionConductor;
+        this.calificacionUsuario = calificacionUsuario;
+        this.idEstrategia = idEstrategia;
+        this.motivo = motivo;
+        this.costo = costo;
+    }
 
     public Integer getIdServicio() {
         return idServicio;
