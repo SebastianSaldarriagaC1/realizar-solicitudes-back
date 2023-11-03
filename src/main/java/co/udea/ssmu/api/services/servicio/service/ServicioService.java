@@ -40,6 +40,7 @@ public class ServicioService {
         servicioRepository.deleteById(id);
     }
 
+    //Bad optimization. It would be better to create a method at servicioRepository that returns Costo directly
     public Double getCostoById(Integer id){
         Optional<Servicio> servicioAux = servicioRepository.findById(id);
 

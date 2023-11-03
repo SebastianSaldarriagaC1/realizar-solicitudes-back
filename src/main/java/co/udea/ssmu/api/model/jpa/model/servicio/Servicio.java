@@ -4,11 +4,17 @@ import co.udea.ssmu.api.model.jpa.model.conductor.Conductor;
 import co.udea.ssmu.api.model.jpa.model.ubicacion.Ubicacion;
 import co.udea.ssmu.api.model.jpa.model.usuario.Usuario;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "servicio")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Servicio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,163 +72,4 @@ public class Servicio {
 
     @Column(name = "costo")
     private Double costo;
-
-    public Servicio() {
-    }
-
-    public Servicio(Integer idServicio, Usuario usuario, Conductor conductor, Ubicacion ubicacionOrigen, Ubicacion ubicacionDestino, LocalDateTime fechaInicio, LocalDateTime fechaFin, Integer idTipoServicio, String estado, String detalles, Integer idCategoria, String estadoPago, String calificacionConductor, String calificacionUsuario, Integer idEstrategia, String motivo, Double costo) {
-        this.idServicio = idServicio;
-        this.usuario = usuario;
-        this.conductor = conductor;
-        this.ubicacionOrigen = ubicacionOrigen;
-        this.ubicacionDestino = ubicacionDestino;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.idTipoServicio = idTipoServicio;
-        this.estado = estado;
-        this.detalles = detalles;
-        this.idCategoria = idCategoria;
-        this.estadoPago = estadoPago;
-        this.calificacionConductor = calificacionConductor;
-        this.calificacionUsuario = calificacionUsuario;
-        this.idEstrategia = idEstrategia;
-        this.motivo = motivo;
-        this.costo = costo;
-    }
-
-    public Integer getIdServicio() {
-        return idServicio;
-    }
-
-    public void setIdServicio(Integer idServicio) {
-        this.idServicio = idServicio;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Conductor getConductor() {
-        return conductor;
-    }
-
-    public void setConductor(Conductor conductor) {
-        this.conductor = conductor;
-    }
-
-    public Ubicacion getUbicacionOrigen() {
-        return ubicacionOrigen;
-    }
-
-    public void setUbicacionOrigen(Ubicacion ubicacionOrigen) {
-        this.ubicacionOrigen = ubicacionOrigen;
-    }
-
-    public Ubicacion getUbicacionDestino() {
-        return ubicacionDestino;
-    }
-
-    public void setUbicacionDestino(Ubicacion ubicacionDestino) {
-        this.ubicacionDestino = ubicacionDestino;
-    }
-
-    public LocalDateTime getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(LocalDateTime fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public LocalDateTime getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(LocalDateTime fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
-    public Integer getIdTipoServicio() {
-        return idTipoServicio;
-    }
-
-    public void setIdTipoServicio(Integer idTipoServicio) {
-        this.idTipoServicio = idTipoServicio;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getDetalles() {
-        return detalles;
-    }
-
-    public void setDetalles(String detalles) {
-        this.detalles = detalles;
-    }
-
-    public Integer getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(Integer idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-    public String getEstadoPago() {
-        return estadoPago;
-    }
-
-    public void setEstadoPago(String estadoPago) {
-        this.estadoPago = estadoPago;
-    }
-
-    public String getCalificacionConductor() {
-        return calificacionConductor;
-    }
-
-    public void setCalificacionConductor(String calificacionConductor) {
-        this.calificacionConductor = calificacionConductor;
-    }
-
-    public String getCalificacionUsuario() {
-        return calificacionUsuario;
-    }
-
-    public void setCalificacionUsuario(String calificacionUsuario) {
-        this.calificacionUsuario = calificacionUsuario;
-    }
-
-    public Integer getIdEstrategia() {
-        return idEstrategia;
-    }
-
-    public void setIdEstrategia(Integer idEstrategia) {
-        this.idEstrategia = idEstrategia;
-    }
-
-    public String getMotivo() {
-        return motivo;
-    }
-
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
-    }
-
-    public Double getCosto() {
-        return costo;
-    }
-
-    public void setCosto(Double costo) {
-        this.costo = costo;
-    }
 }
