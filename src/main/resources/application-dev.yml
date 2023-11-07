@@ -33,6 +33,16 @@ ssmu-api:
     dev-url: http://localhost:8080/ssmu-api
     prod-url: https://ssmu-api.com
 
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html # Ruta de acceso para la interfaz de Swagger-UI
+  api-docs:
+    enabled: true # Habilitar la generación de documentación OpenAPI
+    path: /v3/api-docs # Ruta de acceso para los documentos OpenAPI
+  show-actuator: true # Habilitar la visualización de los endpoints de actuator
+  version: 3.0.0 # Versión de OpenAPI
+
+
 logging:
   level:
     root: DEBUG

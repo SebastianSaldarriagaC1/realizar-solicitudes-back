@@ -99,7 +99,8 @@
             <version>21.1.0.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok
+            Usado para ahorrarnos código en los DTOs y en los Entity    -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -117,6 +118,7 @@
 
     </dependencies>
 
+    <!-- Build cambiado para la correcta configuración de Lombok con MapStruct-->
     <build>
         <plugins>
             <plugin>
