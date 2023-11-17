@@ -7,6 +7,6 @@ server:
 spring:
   # Dev is active by default. This value can be overwritten by java arg param
   profiles:
-    active: h2
+    active: dev
   application:
     name: ssmu-api
