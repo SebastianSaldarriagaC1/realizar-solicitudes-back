@@ -2,6 +2,7 @@ package co.udea.ssmu.api.services.servicio.facade;
 
 import co.udea.ssmu.api.model.jpa.dto.conductor.ConductorDTO;
 import co.udea.ssmu.api.model.jpa.dto.servicio.ServicioDTO;
+import co.udea.ssmu.api.model.jpa.mapper.conductor.ConductorMapper;
 import co.udea.ssmu.api.model.jpa.mapper.servicio.ServicioMapper;
 import co.udea.ssmu.api.model.jpa.mapper.ubicacion.UbicacionMapper;
 import co.udea.ssmu.api.model.jpa.model.ubicacion.Ubicacion;
@@ -20,15 +21,17 @@ public class ServicioFacade {
     private final UbicacionService ubicacionService;
     private final UbicacionMapper ubicacionMapper;
     private final ConductorFacade conductorFacade;
+    private final ConductorMapper conductorMapper;
 
     public ServicioFacade(ServicioService servicioService, ServicioMapper servicioMapper,
                           UbicacionService ubicacionService, UbicacionMapper ubicacionMapper,
-                          ConductorFacade conductorFacade) {
+                          ConductorFacade conductorFacade, ConductorMapper conductorMapper) {
         this.servicioService = servicioService;
         this.servicioMapper = servicioMapper;
         this.ubicacionService = ubicacionService;
         this.ubicacionMapper = ubicacionMapper;
         this.conductorFacade = conductorFacade;
+        this.conductorMapper = conductorMapper;
     }
 
     public ServicioDTO solicitar(ServicioDTO servicio) {
@@ -44,12 +47,12 @@ public class ServicioFacade {
         return servicioMapper.toDto(servicioService.create(servicioMapper.toEntity(servicio)));
     }
 
-    public ServicioDTO aceptar(Integer id) {
-        return servicioMapper.toDto(servicioService.aceptar(id));
+    public ServicioDTO aceptarSolicitudServicio(Integer id) {
+        return servicioMapper.toDto(servicioService.aceptarSolicitudServicio(id));
     }
 
-    public void rechazar(Integer id) {
-        servicioService.rechazar(id);
+    public void rechazarSolicitudServicio(Integer id) {
+        servicioService.rechazarSolicitudServicio(id);
     }
 
     public Double getCostoById(Integer id){
@@ -60,12 +63,11 @@ public class ServicioFacade {
         return servicioMapper.toDto(servicioService.getServicioById(id));
     }
 
-    public ServicioDTO asignarConductor(ServicioDTO servicio){
-        ConductorDTO conductor = conductorFacade.getRandomConductor();
-        servicio.setConductor(conductor);
+    public ServicioDTO aceptarConductor(Integer idServicio, Integer idConductor){
+        return servicioMapper.toDto(servicioService.aceptarConductor(idServicio, idConductor));
+    }
 
-        //Aplicar un update que aun falta el servicio
-
-        return servicio;
+    public ConductorDTO rechazarConductor(){
+        return conductorFacade.getRandomConductor();
     }
 }

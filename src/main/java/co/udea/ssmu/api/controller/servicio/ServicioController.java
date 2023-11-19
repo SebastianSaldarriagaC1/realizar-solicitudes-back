@@ -1,5 +1,6 @@
 package co.udea.ssmu.api.controller.servicio;
 
+import co.udea.ssmu.api.model.jpa.dto.conductor.ConductorDTO;
 import co.udea.ssmu.api.model.jpa.dto.servicio.ServicioDTO;
 import co.udea.ssmu.api.services.servicio.facade.ServicioFacade;
 import co.udea.ssmu.api.utils.common.Messages;
@@ -54,10 +55,10 @@ public class ServicioController {
             }, description = "El servicio fue aceptado exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
-    public ResponseEntity<StandardResponse<ServicioDTO>> aceptar(@PathVariable Integer id) {
+    public ResponseEntity<StandardResponse<ServicioDTO>> aceptarSolicitudServicio(@PathVariable Integer id) {
         return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK,
                 messages.get("servicio.solicitar.succesful"),
-                servicioFacade.aceptar(id)));
+                servicioFacade.aceptarSolicitudServicio(id)));
     }
 
     @DeleteMapping("/solicitar/{id}/rechazar")
@@ -66,9 +67,9 @@ public class ServicioController {
             @ApiResponse(responseCode = "200", description = "La solcitud fue rechazada exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
-    public ResponseEntity<StandardResponse<Void>> rechazar(@PathVariable Integer id) {
+    public ResponseEntity<StandardResponse<Void>> rechazarSolicitudServicio(@PathVariable Integer id) {
         try {
-            servicioFacade.rechazar(id);
+            servicioFacade.rechazarSolicitudServicio(id);
             return ResponseEntity.ok(new StandardResponse<>(messages.get("driver.delete.successful"),
                     StandardResponse.StatusStandardResponse.OK));
         } catch (DataIntegrityViolationException e) {
@@ -94,5 +95,29 @@ public class ServicioController {
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
     public ServicioDTO getServicioById(@PathVariable Integer id) {
         return servicioFacade.getServicioById(id);
+    }
+
+    @PutMapping("/solicitar/aceptar-conductor/{idServicio}/{idConductor}")
+    @Operation(summary = "Permite aceptar, y por lo tanto, asignar a un conductor a un servicio")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = {
+                    @Content(schema = @Schema(implementation = ServicioDTO.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
+            }, description = "El conductor fue aceptado exitosamente"),
+            @ApiResponse(responseCode = "400", description = "La petición es inválida"),
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
+    public ResponseEntity<StandardResponse<ServicioDTO>> aceptarConductorParaServicio(@PathVariable Integer idServicio, @PathVariable Integer idConductor) {
+        return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK,
+                messages.get("servicio.solicitar.succesful"),
+                servicioFacade.aceptarConductor(idServicio, idConductor)));
+    }
+
+    @GetMapping("/solicitar/rechazar-conductor")
+    @Operation(summary = "Permite rechazar un conductor. Además simula la busqueda de uno nuevo")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Servicio hallado exitosamente"),
+            @ApiResponse(responseCode = "400", description = "La petición es inválida"),
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta") })
+    public ConductorDTO rechazarConductor() {
+        return servicioFacade.rechazarConductor();
     }
 }
