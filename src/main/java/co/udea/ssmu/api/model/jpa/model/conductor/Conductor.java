@@ -43,8 +43,14 @@ public class Conductor {
     @Column(name = "nro_servicios")
     private Integer nroServicios;
 
-    @Column(name = "placa")
-    private String placa;
+    @Column(name = "vehiculo_placa")
+    private String vehiculoPlaca;
+
+    @Column(name = "vehiculo_marca")
+    private String vehiculoMarca;
+
+    @Column(name = "vehiculo_modelo")
+    private String vehiculoModelo;
 
     //Relaciones
     @JsonIgnore

@@ -54,4 +54,9 @@ public class ServicioService {
 
         return servicioAux.orElseThrow(() -> new BusinessException(messages.get("servicio.does.not.exist")));
     }
+
+    //Servicios no necesarios, añadidos únicamente como demostración
+    public Double getCostoRandom(){
+        return (Math.random()*20000 + 8000);
+    }
 }

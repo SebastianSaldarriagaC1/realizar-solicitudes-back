@@ -16,5 +16,7 @@ public class ConductorDTO {
     private String rol;
     private Integer idTipoUsuario;
     private Integer nroServicios;
-    private String placa;
+    private String vehiculoPlaca;
+    private String vehiculoMarca;
+    private String vehiculoModelo;
 }

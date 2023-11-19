@@ -59,10 +59,10 @@ public class Servicio {
     private String estadoPago;
 
     @Column(name = "calificacion_conductor")
-    private String calificacionConductor;
+    private Integer calificacionConductor;
 
     @Column(name = "calificacion_usuario")
-    private String calificacionUsuario;
+    private Integer calificacionUsuario;
 
     @Column(name = "id_estrategia")     // Cambiar cuando tenga la tabla Estrategia
     private Integer idEstrategia;

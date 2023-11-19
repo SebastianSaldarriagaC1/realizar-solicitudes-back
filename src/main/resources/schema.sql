@@ -19,7 +19,9 @@ CREATE TABLE conductor (
     rol VARCHAR(50),
     id_tipo_usuario INT, -- Ajustar esto cuando tenga la tabla TipoUsuario
     nro_servicios INT,
-    placa VARCHAR(15)
+    vehiculo_placa VARCHAR(15),
+    vehiculo_marca VARCHAR(15),
+    vehiculo_modelo VARCHAR(15)
 );
 
 CREATE TABLE ubicacion (
